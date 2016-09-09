@@ -2,6 +2,7 @@
 // http://simalabs.com/labs/smoothiejs
 document.addEventListener("pageinit", function(e) {
   if (e.target.id == "smoothie_test_page") {
+    var cnt = 10*2; // 500ms’PˆÊ‚Å“ü—Í‚µ‚Ä‚¢‚é‚½‚ß‚˜‚Q‚µ‚Ä‚¢‚é
     // Randomly add a data point every 500ms
     var data1 = new TimeSeries();
     //data1.maxValue = 10000;
@@ -14,7 +15,14 @@ document.addEventListener("pageinit", function(e) {
     //data1.minValue = 0;
     setInterval(function() {
       var time = new Date().getTime();
-      data1.append(time, Math.random() * 10000);
+      if (cnt !== 0){
+        cnt--;
+        data1.append(time, Math.random() * 10000);
+      }
+      // else{
+      //   data1.append(time, 0);
+      // }
+      //data1.append(time, Math.random() * 10000);
       data2.append(time, Math.random() * 10000);
       data3.append(time, Math.random() * 10000);
     }, 500);
